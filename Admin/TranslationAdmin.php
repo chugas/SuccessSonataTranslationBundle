@@ -1,10 +1,9 @@
 <?php
 
 namespace Ibrows\SonataTranslationBundle\Admin;
+
 use Sonata\AdminBundle\Route\RouteCollection;
-
 use Lexik\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
-
 use Sonata\AdminBundle\Model\ModelManagerInterface;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -17,16 +16,25 @@ abstract class TranslationAdmin extends Admin
      */
     protected $transUnitManager;
 
+    /**
+     * @param TransUnitManagerInterface $translationManager
+     */
     public function setTransUnitManager(TransUnitManagerInterface $translationManager)
     {
         $this->transUnitManager = $translationManager;
     }
 
+    /**
+     * @param array $managedLocales
+     */
     public function setManagedLocales($managedLocales)
     {
         $this->managedLocales = $managedLocales;
     }
 
+    /**
+     * @return array
+     */
     public function getFilterParameters()
     {
         $this->datagridValues = array_merge(array(
@@ -57,13 +65,28 @@ abstract class TranslationAdmin extends Admin
         return parent::getTemplate($name);
     }
 
+    /**
+     * @param string $name
+     * @return string
+     */
+    public function getOriginalTemplate($name)
+    {
+        return parent::getTemplate($name);
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
             ->add('clear_cache')
         ;
     }
-    
+
+    /**
+     * @param ListMapper $list
+     */
     protected function configureListFields(ListMapper $list)
     {
         $list
@@ -80,7 +103,10 @@ abstract class TranslationAdmin extends Admin
             $list->add($fieldDescription);
         }
     }
-    
+
+    /**
+     * @param FormMapper $form
+     */
     protected function configureFormFields(FormMapper $form)
     {
         $form
