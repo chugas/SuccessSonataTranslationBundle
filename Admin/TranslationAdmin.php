@@ -81,6 +81,7 @@ abstract class TranslationAdmin extends Admin
     {
         $collection
             ->add('clear_cache')
+            ->add('create_trans_unit')
         ;
     }
 
