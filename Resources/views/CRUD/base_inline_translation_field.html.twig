@@ -26,27 +26,27 @@ file that was distributed with this source code.
 
 {% if admin.isGranted('EDIT', object) %}
 <script>
-$('#{{ id }}').editable({
-	mode: "inline",
-	type: "{{ field_description.type }}",
-	url: "{{ admin.generateObjectUrl(field_description.options.route.name, object, field_description.options.route.parameters) }}",
-	name: "{{ object.key }}",
-	params: function(params) {
-		// make sure pk is always loaded from element
-		params.pk = $(this).attr('data-pk');
-		params.locale = "{{ locale }}";
-	    return params;
-	},
-	error: function(response) {
-		response = JSON.parse(response.responseText);
-		return response ? response.message : response;
-	},
-	success: function(response, newValue) {
-		$(this).attr('data-pk', response.pk);
-		return response;
-	},
-	value: "{{ content }}"
-});
+    jQuery('#{{ id }}').editable({
+        mode: "inline",
+        type: "textarea",
+        url: {{ admin.generateObjectUrl(field_description.options.route.name, object, field_description.options.route.parameters)|json_encode|raw }},
+        name: {{ object.key|json_encode|raw }},
+        params: function(params) {
+            // make sure pk is always loaded from element
+            params.pk = jQuery(this).attr('data-pk');
+            params.locale = {{ locale|json_encode|raw }};
+            return params;
+        },
+        error: function(response) {
+            response = JSON.parse(response.responseText);
+            return response ? response.message : response;
+        },
+        success: function(response, newValue) {
+            jQuery(this).attr('data-pk', response.pk);
+            return response;
+        },
+        value: {{ content|json_encode|raw }}
+    });
 </script>
 {% endif %}
 </td>
