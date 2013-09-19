@@ -25,10 +25,13 @@ file that was distributed with this source code.
 </a>
 
 {% if admin.isGranted('EDIT', object) %}
+{% set options = field_description.options.editable %}
 <script>
     jQuery('#{{ id }}').editable({
-        mode: "inline",
-        type: "textarea",
+        mode: "{{ options.mode }}",
+        type: "{{ options.type }}",
+        emptytext: "{{ options.emptytext }}",
+        placement: "{{ options.placement }}",
         url: {{ admin.generateObjectUrl(field_description.options.route.name, object, field_description.options.route.parameters)|json_encode|raw }},
         name: {{ object.key|json_encode|raw }},
         params: function(params) {

@@ -11,6 +11,9 @@
 			<argument />
 			<argument>Lexik\Bundle\TranslationBundle\Entity\TransUnit</argument>
 			<argument>IbrowsSonataTranslationBundle:TranslationCRUD</argument>
+			<call method="setEditableOptions">
+				<argument>%ibrows_sonata_translation.editable%</argument>
+			</call>
 			<call method="setTranslationDomain">
 				<argument>IbrowsSonataTranslationBundle</argument>
 			</call>

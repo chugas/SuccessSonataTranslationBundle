@@ -15,6 +15,18 @@ abstract class TranslationAdmin extends Admin
      * @var TransUnitManagerInterface
      */
     protected $transUnitManager;
+    /**
+     * @var array
+     */
+    protected $editableOptions;
+
+    /**
+     * @param array $options
+     */
+    public function setEditableOptions(array $options)
+    {
+	    	$this->editableOptions = $options;
+    }
 
     /**
      * @param TransUnitManagerInterface $translationManager
@@ -100,7 +112,7 @@ abstract class TranslationAdmin extends Admin
             $fieldDescription = $this->modelManager->getNewFieldDescriptionInstance($this->getClass(), $locale);
             $fieldDescription->setTemplate('IbrowsSonataTranslationBundle:CRUD:base_inline_translation_field.html.twig');
             $fieldDescription->setOption('locale', $locale);
-            $fieldDescription->setType('text');
+            $fieldDescription->setOption('editable', $this->editableOptions);
             $list->add($fieldDescription);
         }
     }

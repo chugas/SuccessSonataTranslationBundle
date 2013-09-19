@@ -4,6 +4,7 @@ namespace Ibrows\SonataTranslationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -20,10 +21,25 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ibrows_sonata_translation');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $this->addEditableSection($rootNode);
 
         return $treeBuilder;
+    }
+    
+    protected function addEditableSection(ArrayNodeDefinition $node)
+    {
+    		$node
+    			->children()
+		    		->arrayNode('editable')
+			    		->addDefaultsIfNotSet()
+			    		->children()
+				    		->scalarNode('mode')->defaultValue('inline')->end()
+				    		->scalarNode('type')->defaultValue('textarea')->end()
+				    		->scalarNode('emptytext')->defaultValue('Empty')->end()
+				    		->scalarNode('placement')->defaultValue('top')->end()
+			    		->end()
+		    		->end()
+	    		->end()
+    		;
     }
 }
