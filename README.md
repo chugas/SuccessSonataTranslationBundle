@@ -3,7 +3,7 @@
 
 The SonataTranslationBundle is an integration of the LexikTranslationBundle into the SonataAdminBundle.
 
-![image](http://)
+![image](https://raw.github.com/ibrows/IbrowsSonataTranslationBundle/master/Resources/doc/screen/overview.png)
 
 ## Installation
 
