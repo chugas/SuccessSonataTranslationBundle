@@ -1,5 +1,5 @@
 # SonataTranslationBundle
-========================
+
 
 The SonataTranslationBundle is an integration of the LexikTranslationBundle into the SonataAdminBundle.
 
@@ -61,9 +61,17 @@ lexik_translation:
     managed_locales: [en]    # (required) locales that the bundle have to manage
 ```
 
-For additional configiration options please refer to the official [documentation](https://github.com/lexik/LexikTranslationBundle/blob/master/Resources/doc/index.md)
+For additional configuration options please refer to the official [documentation](https://github.com/lexik/LexikTranslationBundle/blob/master/Resources/doc/index.md#configuration)
+
+In order to have some keys shown up in the admin panel, you have to import the translation files first. This is done through a command offered by LexikTranslationBundle:
+
+```
+./app/console lexik:translations:import [bundleName] [--cache-clear] [--force] [--globals]
+
+```
+Once again refer to the official [documentation](https://github.com/lexik/LexikTranslationBundle/blob/master/Resources/doc/index.md#import-translations) for additional information.
 
 
 ## Usage
 
-Include the bundle and it will show up in SonataAdmin. There really is not more to it ;).
+Include the bundle and it will show up in the admin panel. There really is not more to say about it ;).
