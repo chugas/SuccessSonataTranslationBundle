@@ -1,0 +1,69 @@
+# SonataTranslationBundle
+========================
+
+The SonataTranslationBundle is an integration of the LexikTranslationBundle into the SonataAdminBundle.
+
+![image](http://)
+
+## Installation
+
+Add the following lines in your composer.json:
+
+```
+{
+    "require": {
+		"ibrows/sonata-translation-bundle" : "dev-master",
+    }
+}
+```
+
+
+To start using the bundle, register the SonataTranslationBundle and LixikTranslationBundle in your application's kernel class:
+
+``` 
+<php
+// app/AppKernel.php
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+		new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
+		new Ibrows\SonataTranslationBundle\IbrowsSonataTranslationBundle(),
+    );
+)
+```
+
+## Configuration
+
+#### SonataTranslationBundle
+No initial configuration is necessary.
+
+However there are some options you can configure in order to edit the look. Below the default configuration is shown:
+
+```
+# app/config/config.yml
+ibrows_sonata_translation:
+	editable:
+    	mode: inline		 # Mode of editable, can be popup or inline
+		type: textarea		 # Type of input. Can be text|textarea|select|date|checklist and more
+		emptytext: Empty 	 # text to display on empty translations
+		placement: top		 # ingnored for inline mode
+```
+
+#### LexikTranslationBundle
+
+The minimal configuration consists of:
+
+```
+# app/config/config.yml
+lexik_translation:
+    fallback_locale: en      # (required) default locale to use
+    managed_locales: [en]    # (required) locales that the bundle have to manage
+```
+
+For additional configiration options please refer to the official [documentation](https://github.com/lexik/LexikTranslationBundle/blob/master/Resources/doc/index.md)
+
+
+## Usage
+
+Include the bundle and it will show up in SonataAdmin. There really is not more to it ;).
