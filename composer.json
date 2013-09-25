@@ -1,5 +1,5 @@
 {
-    "name": "ibrows/sonata-translation-bundle",
+    "name": "success/sonata-translation-bundle",
     "description": "Integration of lexik translation into sonata admin",
     "keywords": ["ibrows", "lexik", "translation", "sonata"],
     "type": "symfony-bundle",
