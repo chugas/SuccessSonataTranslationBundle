@@ -4,11 +4,16 @@
     "keywords": ["ibrows", "lexik", "translation", "sonata"],
     "type": "symfony-bundle",
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:chugas/SuccessTranslationBundle.git"
+        }
+    ],
     "require": {
         "php": ">=5.3.0",
         "symfony/framework-bundle": ">=2.1",
-        "sonata-project/admin-bundle": "*",
-        "lexik/translation-bundle": "*"
+        "success/translation-bundle": "*"
     },
     "autoload": {
         "psr-0": { "Ibrows\\SonataTranslationBundle": "" }
